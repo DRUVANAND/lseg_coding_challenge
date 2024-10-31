@@ -1,1 +1,0 @@
-# lseg_coding_challenge
