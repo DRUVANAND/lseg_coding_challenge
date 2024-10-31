@@ -21,7 +21,7 @@ Create a chatbot that enables users to select any of 3 Stock Exchanges (LSEG, NA
 │   └── startup-script.sh
 ├── .github
 │   └── workflows
-│       └── main.yml
+│       └── terraform.yml
 └── README.md
 ```
 
