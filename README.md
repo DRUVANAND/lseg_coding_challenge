@@ -73,15 +73,18 @@ The application has been hosted on a Google Cloud Platform (GCP) Compute Engine 
    cd chatbot-app
    ```
 2. **Add Secret Variables on GitHub:**
-   ```1. Go to Settings > Secrets and variables > Actions in your GitHub repository.
+   ```
+      1. Go to Settings > Secrets and variables > Actions in your GitHub repository.
       2. Add a secret named GOOGLE_CREDENTIALS containing your GCP service account credentials in JSON format.
    ```
 3. **Run the GitHub Actions Pipeline:**
-   ```1. Push your changes to the main branch or manually trigger the GitHub Actions workflow.
+   ```
+      1. Push your changes to the main branch or manually trigger the GitHub Actions workflow.
       2. The pipeline will automatically initialize Terraform, provision the Compute Engine instance, and deploy the application.
    ```
 2. **Access the Application:**
-   ```1. Once the GitHub Actions workflow completes, note the external IP of the Compute Engine instance.
+   ```
+      1. Once the GitHub Actions workflow completes, note the external IP of the Compute Engine instance.
       2. Open your browser and go to http://<external-ip>:5000 to access the chatbot application.
    ```
 
