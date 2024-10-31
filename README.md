@@ -1,62 +1,102 @@
-# Stock Exchange Chatbot
+# Chatbot Stock Exchange Project
 
-## Project Overview:
-This is a Flask-based chatbot application that allows users to select a stock exchange (LSEG, NASDAQ, or NYSE), view top 5 stocks from that exchange, and check their latest prices.
+## Objective
+Create a chatbot that enables users to select any of 3 Stock Exchanges (LSEG, NASDAQ, NYSE) and for the selected exchange, provides 5 stocks that are traded in that exchange. Users can then select any one of those stocks to view the latest stock price.
 
-## Features:
-- Home menu with 3 stock exchanges (LSEG, NASDAQ, NYSE).
-- Stock menu displays 5 stocks for the selected exchange.
-- Displays the current price of the selected stock.
-- Option to navigate back to the home or stock menu.
+## Directory Structure
+```
+/chatbot-app
+├── chatbotapp.py
+├── templates
+│   ├── home.html
+│   ├── stock_menu.html
+│   ├── price.html
+│   └── error.html
+├── stock_data.json
+├── Dockerfile
+├── requirements.txt
+├── terraform
+│   ├── main.tf
+│   ├── provider.tf
+│   └── startup-script.sh
+├── .github
+│   └── workflows
+│       └── main.yml
+└── README.md
+```
 
-## How to Run Locally:
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/your-repo/chatbot-app.git
-    cd chatbot-app
-    ```
+## Setup and Run
+1. **Clone the repository:**
+   ```sh
+   git clone <repository-url>
+   cd chatbot-app
+   ```
 
-2. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+2. **Install dependencies:**
+   ```sh
+   pip install -r requirements.txt
+   ```
 
-3. Run the Flask application:
-    ```bash
-    python app.py
-    ```
+3. **Run the application:**
+   ```sh
+   python3 chatbotapp.py
+   ```
 
-4. Open `http://127.0.0.1:5000` in your browser to interact with the chatbot.
+4. **Access the application:** Open your browser and go to `http://localhost:5000`.
 
-## Docker Instructions:
-1. Build the Docker image:
-    ```bash
-    docker build -t chatbot-app .
-    ```
+## As an additional step, this application has been containerized, pushed to my Docker Hub, and deployed on a GCP Compute Engine instance using Terraform and GitHub Actions CI.
 
-2. Run the Docker container:
-    ```bash
-    docker run -d -p 5000:5000 chatbot-app
-    ```
+## Docker Deployment
+This application has been containerized using Docker. To build and run the Docker container locally:
 
-3. Open `http://127.0.0.1:5000` in your browser.
+1. **Build the Docker image:**
+   ```sh
+   docker build -t chatbot-app .
+   ```
 
-## Terraform Deployment to GCP:
-1. Ensure you have Terraform installed and GCP credentials set up.
+2. **Run the Docker container:**
+   ```sh
+   docker run -p 5000:5000 chatbot-app
+   ```
 
-2. Run the Terraform commands:
-    ```bash
-    terraform init
-    terraform apply -auto-approve
-    ```
+3. **Access the application:** Open your browser and go to `http://localhost:5000`.
 
-## GitLab CI Pipeline:
-1. Set up the GitLab CI pipeline by adding `.gitlab-ci.yml` to your repo.
-2. The pipeline will build the Docker image, push it to Google Container Registry (GCR), and deploy it using Terraform.
 
-## Error Handling:
-- The app handles missing or malformed JSON files gracefully and provides a "not found" message for invalid stock codes or exchanges.
+## Hosting on GCP
+The application has been hosted on a Google Cloud Platform (GCP) Compute Engine instance. Infrastructure as Code (IaC) has been implemented using Terraform for deployment automation, with GitHub Actions managing continuous integration and deployment.
 
-## Optional Enhancements:
-- Add real-time stock price updates using stock market APIs like Alpha Vantage or Yahoo Finance.
-- Improve UI with CSS or integrate with a chatbot service like Dialogflow.
+### Setup Instructions
+
+1. **Clone the repository:**
+   ```sh
+   git clone <repository-url>
+   cd chatbot-app
+   ```
+2. **Add Secret Variables on GitHub:**
+   ```1. Go to Settings > Secrets and variables > Actions in your GitHub repository.
+      2. Add a secret named GOOGLE_CREDENTIALS containing your GCP service account credentials in JSON format.
+   ```
+3. **Run the GitHub Actions Pipeline:**
+   ```1. Push your changes to the main branch or manually trigger the GitHub Actions workflow.
+      2. The pipeline will automatically initialize Terraform, provision the Compute Engine instance, and deploy the application.
+   ```
+2. **Access the Application:**
+   ```1. Once the GitHub Actions workflow completes, note the external IP of the Compute Engine instance.
+      2. Open your browser and go to http://<external-ip>:5000 to access the chatbot application.
+   ```
+
+## Application Navigation and Features
+
+Once the application is up and running, follow these steps to navigate and check key features:
+
+1. **Access the Home Menu:**
+   - Open your browser and navigate to `http://<external-ip>:5000`.
+   - The home page will display options for three stock exchanges: **LSEG**, **NASDAQ**, and **NYSE**.
+
+2. **Stock Exchange Selection:**
+   - Choose a stock exchange to view a list of five stocks associated with that exchange.
+   - Each exchange displays unique stocks, enabling users to explore different market options.
+
+3. **Viewing Stock Prices:**
+   - Select any of the listed stocks to view its latest price.
+   - Once a stock price is displayed, you have the option to navigate back to the Stock Menu to select another stock, or return to the Home Menu to choose a different exchange.
