@@ -28,7 +28,7 @@ Create a chatbot that enables users to select any of 3 Stock Exchanges (LSEG, NA
 ## Setup and Run
 1. **Clone the repository:**
    ```sh
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/DRUVANAND/lseg_coding_challenge.git)
    cd chatbot-app
    ```
 
