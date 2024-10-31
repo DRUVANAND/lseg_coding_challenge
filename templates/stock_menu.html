@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Menu - {{ exchange }}</title>
+</head>
+<body>
+    <h1>Top Stocks in {{ exchange }}</h1>
+    <ul>
+        {% for stock in stocks %}
+        <li><a href="/price/{{ exchange }}/{{ stock.code }}">{{ stock.stockName }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+
